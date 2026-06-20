@@ -1,11 +1,47 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { RouterLink } from '@angular/router';
+import { 
+  IonApp, 
+  IonSplitPane, 
+  IonMenu, 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonList, 
+  IonMenuToggle, 
+  IonItem, 
+  IonIcon, 
+  IonLabel, 
+  IonRouterOutlet 
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { peopleOutline, megaphoneOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet],
+  styleUrls: ['app.component.scss'],
+  standalone: true,
+  imports: [
+    RouterLink,
+    IonApp, 
+    IonSplitPane, 
+    IonMenu, 
+    IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonList, 
+    IonMenuToggle, 
+    IonItem, 
+    IonIcon, 
+    IonLabel, 
+    IonRouterOutlet
+  ],
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+    addIcons({ peopleOutline, megaphoneOutline });
+  }
 }
