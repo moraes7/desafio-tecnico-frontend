@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Crianças</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Selecione uma criança para ver a carteira:</h2>
+
+  <ion-list lines="inset">
+    <ion-item *ngFor="let crianca of listaCriancas" [routerLink]="['/carteira', crianca.id]" button>
+      <ion-avatar slot="start">
+        <div class="avatar-fake">{{ crianca.nome.charAt(0) }}</div>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ crianca.nome }}</h3>
+        <p>Nascimento: {{ crianca.dataNascimento | date:'dd/MM/yyyy' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
