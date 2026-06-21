@@ -8,9 +8,9 @@ export const MOCK_CRIANCAS: CriancaEntity[] = [
 ];
 
 export const MOCK_VACINAS: VacinaEntity[] = [
-    { id: 'v1', nome: 'BCG', descricao: 'Previne formas graves de tuberculose', mesesRecomendado: 0 },
-    { id: 'v2', nome: 'Hepatite B', descricao: 'Previne a hepatite B', mesesRecomendado: 0 },
-    { id: 'v3', nome: 'Tríplice Viral', descricao: 'Previne Sarampo, Caxumba e Rubéola', mesesRecomendado: 12 }
+    { id: 'v1', nome: 'BCG', descricao: 'Previne formas graves de tuberculose', mesesRecomendado: 0, doseVacina: 'Dose única.' },
+    { id: 'v2', nome: 'Hepatite B', descricao: 'Previne a hepatite B', mesesRecomendado: 0, doseVacina: '1ª Dose.' },
+    { id: 'v3', nome: 'Tríplice Viral', descricao: 'Previne Sarampo, Caxumba e Rubéola', mesesRecomendado: 12, doseVacina: '1ª Dose.' }
 ];
 
 export const MOCK_REGISTROS: RegistroVacinaEntity[] = [
