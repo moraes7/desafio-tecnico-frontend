@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MOCK_CRIANCAS, MOCK_VACINAS, MOCK_REGISTROS } from '../data/carteira-vacinacao.mock';
 import { CriancaEntity } from '../models/crianca.entity';
 import { RegistroVacinaEntity } from '../models/registro-vacina.entity';
+import { VacinaEntity } from '../models/vacina.entity';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,10 @@ export class CarteiraVacinacaoService {
     return MOCK_CRIANCAS;
   };
 
+  getVacinas(): VacinaEntity[] {
+    return MOCK_VACINAS;
+  };
+
   getHistoricoVacinacaoPorCrianca(criancaID: string): RegistroVacinaEntity[] {
     return MOCK_REGISTROS.filter(registro => registro.criancaID === criancaID);
   };
@@ -21,5 +26,5 @@ export class CarteiraVacinacaoService {
     const vacinouHoje = new Date();
 
     return !registro.vacinaAplicada && registro.dataLimite < vacinouHoje;
-  }
+  };
 }

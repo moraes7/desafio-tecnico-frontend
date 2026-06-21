@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'carteira-vacinacao/:id',
     loadComponent: () => import('./pages/carteira-vacinacao/carteira-vacinacao.page').then( m => m.CarteiraVacinacaoPage)
   },
+  {
+    path: 'campanha-vacinacao',
+    loadComponent: () => import('./pages/campanha-vacinacao/campanha-vacinacao.page').then( m => m.CampanhaVacinacaoPage)
+  },
 ];
