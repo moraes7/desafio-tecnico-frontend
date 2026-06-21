@@ -1,13 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>campanha-vacinacao</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Campanhas e Informações</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">campanha-vacinacao</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  
+  <ion-card color="tertiary" class="banner-campanha">
+    <ion-card-header>
+      <div class="banner-header">
+        <ion-icon name="megaphone-outline" size="large"></ion-icon>
+        <ion-card-title>Campanha de Vacinação Nacional 2026</ion-card-title>
+      </div>
+      <ion-card-subtitle>Multivacinação Infantil</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Leve seus filhos ao posto de saúde mais próximo para atualizar a carteirinha. Proteger é um ato de amor!</p>
+    </ion-card-content>
+  </ion-card>
+
+  <h2 class="ion-padding-top">Guia de Vacinas Disponíveis</h2>
+
+  <ion-card *ngFor="let vacina of listaVacinas">
+    <ion-card-header>
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-icon slot="start" name="shield-checkmark-outline" color="primary"></ion-icon>
+        <ion-label>
+          <ion-card-title>{{ vacina.nome }}</ion-card-title>
+          <ion-card-subtitle>Dose: {{ vacina.doseVacina }}</ion-card-subtitle>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="descricao-vacina">{{ vacina.descricao }}</p>
+      
+      <div class="info-idade ion-margin-top">
+        <ion-icon name="information-circle-outline" color="medium"></ion-icon>
+        <ion-label color="medium">
+          <small> Idade recomendada: {{ vacina.mesesRecomendado }} meses</small>
+        </ion-label>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

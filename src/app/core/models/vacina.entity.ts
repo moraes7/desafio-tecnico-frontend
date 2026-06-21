@@ -3,4 +3,5 @@ export interface VacinaEntity {
     nome: string;
     descricao: string;
     mesesRecomendado: number;
+    doseVacina: string;
 }

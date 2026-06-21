@@ -1,0 +1,25 @@
+.banner-campanha {
+  margin: 0 0 20px 0;
+  
+  .banner-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    ion-icon {
+      font-size: 2rem;
+    }
+  }
+}
+
+.descricao-vacina {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--ion-color-dark);
+}
+
+.info-idade {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
