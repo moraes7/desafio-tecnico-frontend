@@ -24,7 +24,7 @@
 
   <h2 class="ion-padding-top">Guia de Vacinas Disponíveis</h2>
 
-  <ion-card *ngFor="let vacina of listaVacinas">
+  <ion-card *ngFor="let vacina of listaVacinas$ | async">
     <ion-card-header>
       <ion-item lines="none" class="ion-no-padding">
         <ion-icon slot="start" name="shield-checkmark-outline" color="primary"></ion-icon>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { 
   IonContent, 
   IonHeader, 
@@ -18,7 +18,6 @@ import {
   IonList 
 } from '@ionic/angular/standalone';
 import { CarteiraVacinacaoService } from '../../core/services/carteira-vacinacao.service';
-import { RegistroVacinaEntity } from '../../core/models/registro-vacina.entity';
 import { CriancaEntity } from '../../core/models/crianca.entity';
 
 @Component({
@@ -44,20 +43,22 @@ import { CriancaEntity } from '../../core/models/crianca.entity';
     IonList
   ]
 })
-
 export class CarteiraVacinacaoPage implements OnInit {
-  crianca: CriancaEntity | undefined;
-  historicoVacinacao: RegistroVacinaEntity[] = [];
+  @Input() id!: string;
 
-  constructor(private route: ActivatedRoute, public vacinacaoService: CarteiraVacinacaoService) {};
+  public vacinacaoService = inject(CarteiraVacinacaoService);
+
+  crianca$!: Observable<CriancaEntity>;
+  
+  historicoVacinacao$!: Observable<any[]>;
+
+  constructor() {}
 
   ngOnInit() {
-    const criancaID = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.crianca$ = this.vacinacaoService.getCriancaPorId(this.id);
 
-    if(criancaID) {
-      this.crianca = this.vacinacaoService.getCriancas().find(c => c.id === criancaID);
-
-      this.historicoVacinacao = this.vacinacaoService.getHistoricoVacinacaoPorCrianca(criancaID);
+      this.historicoVacinacao$ = this.vacinacaoService.getHistoricoVacinacaoPorCrianca(this.id);
     }
   }
-};
+}

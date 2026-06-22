@@ -11,7 +11,7 @@
   <h2>Selecione uma criança para ver a carteira:</h2>
 
   <ion-list lines="inset">
-    <ion-item *ngFor="let crianca of listaCriancas" [routerLink]="['/carteira-vacinacao', crianca.id]" button>
+    <ion-item *ngFor="let crianca of (listaCriancas$ | async)" [routerLink]="['/carteira-vacinacao', crianca.id]" button>
       <ion-avatar slot="start">
         <div class="avatar-fake">{{ crianca.nome.charAt(0) }}</div>
       </ion-avatar>

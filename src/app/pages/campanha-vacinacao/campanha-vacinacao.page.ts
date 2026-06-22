@@ -21,6 +21,7 @@ import { addIcons } from 'ionicons';
 import { informationCircleOutline, shieldCheckmarkOutline } from 'ionicons/icons';
 import { CarteiraVacinacaoService } from '../../core/services/carteira-vacinacao.service';
 import { VacinaEntity } from '../../core/models/vacina.entity';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-campanha-vacinacao',
@@ -43,18 +44,17 @@ import { VacinaEntity } from '../../core/models/vacina.entity';
     IonIcon,
     IonItem,
     IonLabel,
-    IonList
   ]
 })
 
 export class CampanhaVacinacaoPage implements OnInit {
-  listaVacinas: VacinaEntity[] = [];
+  listaVacinas$!: Observable<VacinaEntity[]>;
 
   constructor(private carteiraVacinacaoService: CarteiraVacinacaoService) {
     addIcons({informationCircleOutline, shieldCheckmarkOutline});
   };
 
   ngOnInit() {
-    this.listaVacinas = this.carteiraVacinacaoService.getVacinas();
+    this.listaVacinas$ = this.carteiraVacinacaoService.getVacinas();
   };
 };

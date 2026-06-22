@@ -1,50 +1,74 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/criancas"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Carteira: {{ crianca?.nome }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ng-container *ngIf="crianca$ | async as crianca">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/criancas"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Carteira: {{ crianca.nome }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="ion-padding">
-  <div *ngIf="historicoVacinacao.length === 0" class="ion-text-center ion-padding">
-    <p>Nenhuma vacina registrada para esta criança.</p>
-  </div>
-
-  <ion-card *ngFor="let registro of historicoVacinacao">
-    <ion-card-header>
-      <div class="header-vacinacao">
-        <ion-card-title>Vacina ID: {{ registro.vacinaID }}</ion-card-title>
-        
-        <ion-badge color="secondary" *ngIf="registro.vacinaAplicada">
-          Aplicada
-        </ion-badge>
-
-        <ion-badge color="tertiary" *ngIf="vacinacaoService.isCriancaVacinaAtrasada(registro)">
-          Atrasada / Pendente
-        </ion-badge>
-
-        <ion-badge color="warning" *ngIf="!registro.vacinaAplicada && !vacinacaoService.isCriancaVacinaAtrasada(registro)">
-          Agendada
-        </ion-badge>
+  <ion-content class="ion-padding">
+    <ng-container *ngIf="historicoVacinacao$ | async as historico; else carregando">
+      
+      <div *ngIf="historico.length === 0" class="ion-text-center ion-padding">
+        <p>Nenhuma vacina registrada para esta criança.</p>
       </div>
-    </ion-card-header>
 
-    <ion-card-content>
-      <ion-list lines="none">
-        <ion-item *ngIf="registro.vacinaAplicada">
-          <ion-label>
-            <strong>Data da Aplicação:</strong> {{ registro.dataAplicacao | date:'dd/MM/yyyy' }}
-          </ion-label>
-        </ion-item>
+      <ion-card *ngFor="let registro of historico">
+        <ion-card-header>
+          <div class="header-vacinacao" style="display: flex; justify-content: space-between; align-items: center;">
+            <ion-card-title>{{ registro.dadosVacina?.nome || 'Vacina não encontrada' }}</ion-card-title>
+            
+            <div>
+              <ion-badge color="secondary" *ngIf="registro.vacinaAplicada">
+                Aplicada
+              </ion-badge>
 
-        <ion-item>
-          <ion-label>
-            <strong>Data Limite Recomendada:</strong> {{ registro.dataLimite | date:'dd/MM/yyyy' }}
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+              <ion-badge color="danger" *ngIf="vacinacaoService.isCriancaVacinaAtrasada(registro)">
+                Atrasada
+              </ion-badge>
+
+              <ion-badge color="warning" *ngIf="!registro.vacinaAplicada && !vacinacaoService.isCriancaVacinaAtrasada(registro)">
+                Agendada
+              </ion-badge>
+            </div>
+          </div>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p *ngIf="registro.dadosVacina?.descricao" class="ion-padding-bottom">
+            {{ registro.dadosVacina?.descricao }}
+          </p>
+
+          <ion-list lines="none">
+            <ion-item *ngIf="registro.dadosVacina?.doseVacina">
+              <ion-label>
+                <strong>Dose:</strong> {{ registro.dadosVacina?.doseVacina }}
+              </ion-label>
+            </ion-item>
+
+            <ion-item *ngIf="registro.vacinaAplicada">
+              <ion-label>
+                <strong>Data da Aplicação:</strong> {{ registro.dataAplicacao.toDate() | date:'dd/MM/yyyy' }}
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <strong>Data Limite Recomendada:</strong> {{ registro.dataLimite.toDate() | date:'dd/MM/yyyy' }}
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+    </ng-container>
+
+    <ng-template #carregando>
+      <div class="ion-text-center ion-padding">
+        <p>Buscando histórico de vacinação...</p>
+      </div>
+    </ng-template>
+  </ion-content>
+</ng-container>

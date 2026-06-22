@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 import { 
   IonContent, 
   IonHeader, 
@@ -38,11 +39,13 @@ import { CriancaEntity } from '../../core/models/crianca.entity';
 })
 
 export class CriancasPage implements OnInit {
-  listaCriancas: CriancaEntity[] = [];
+  listaCriancas$!: Observable<CriancaEntity[]>;
+  
+  private carteiraVacinacaoService = inject(CarteiraVacinacaoService);
 
-  constructor(private carteiraVacinacaoService: CarteiraVacinacaoService) {};
+  constructor() {}
 
   ngOnInit() {
-    this.listaCriancas = this.carteiraVacinacaoService.getCriancas();
+    this.listaCriancas$ = this.carteiraVacinacaoService.getCriancas();
   }
 };
