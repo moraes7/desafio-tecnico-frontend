@@ -4,6 +4,10 @@ Aplicativo para gerenciamento de carteira de vacinação de crianças, desenvolv
 
 🚀 **[Acesse o Deploy em Produção](https://vacinacao-infantil.web.app/)**
 
+## 📺 Demonstração Rápida
+
+![Demonstração do Carteira de Vacinação](./src/assets/demonstraçao.gif)
+
 ## Sobre o Projeto
 
 Este é um aplicativo híbrido que permite:
