@@ -47,33 +47,60 @@ Este é um aplicativo híbrido que permite:
 desafio-tecnico/
 ├── src/
 │   ├── app/
-│   │   ├── core/                      # Lógica compartilhada
-│   │   │   ├── models/               # Interfaces/Entities
+│   │   ├── core/                           # Lógica compartilhada
+│   │   │   ├── models/                    # Interfaces/Entities
 │   │   │   │   ├── crianca.entity.ts
 │   │   │   │   ├── vacina.entity.ts
 │   │   │   │   └── registro-vacina.entity.ts
-│   │   │   └── services/             # Serviços (Firestore integration)
+│   │   │   └── services/                  # Serviços (Firestore integration)
 │   │   │       └── carteira-vacinacao.service.ts
-│   │   ├── pages/                    # Páginas da aplicação
-│   │   │   ├── carteira-vacinacao/   # Histórico de vacinação
-│   │   │   ├── criancas/             # Gestão de crianças
-│   │   │   └── campanha-vacinacao/   # Campanhas ativas
-│   │   ├── tabs/                     # Layout principal com abas
-│   │   ├── tab1/, tab2/, tab3/       # Páginas de abas específicas
-│   │   ├── app.component.ts          # Componente raiz
-│   │   └── app.routes.ts             # Configuração de rotas
-│   ├── assets/                       # Ícones e recursos estáticos
-│   ├── environments/                 # Configuração por ambiente
-│   ├── theme/                        # Estilos globais (SCSS)
-│   └── index.html
-├── www/                              # Build output (distribuição)
-├── public/                           # Assets públicos
-├── angular.json                      # Configuração Angular
-├── ionic.config.json                 # Configuração Ionic
-├── capacitor.config.ts               # Configuração Capacitor
-├── tsconfig.json                     # Configuração TypeScript
-├── karma.conf.js                     # Configuração de testes
-└── package.json                      # Dependências do projeto
+│   │   │
+│   │   ├── shared/                        # Componentes e utilitários reutilizáveis
+│   │   │   ├── app/                       # Componente raiz (App Component)
+│   │   │   │   ├── app.component.ts
+│   │   │   │   ├── app.component.html
+│   │   │   │   ├── app.component.scss
+│   │   │   │   └── app.component.spec.ts
+│   │   │   ├── components/                # Componentes reutilizáveis
+│   │   │   │   ├── explore-container/
+│   │   │   │   ├── tab1/
+│   │   │   │   ├── tab2/
+│   │   │   │   └── tab3/
+│   │   │   └── utils/                     # Utilitários compartilhados
+│   │   │
+│   │   ├── layouts/                       # Componentes de layout
+│   │   │   └── tabs/                      # Layout principal com abas
+│   │   │       ├── tabs.page.html
+│   │   │       ├── tabs.page.scss
+│   │   │       ├── tabs.page.ts
+│   │   │       ├── tabs.page.spec.ts
+│   │   │       └── tabs.routes.ts
+│   │   │
+│   │   ├── pages/                         # Páginas (Smart Components)
+│   │   │   ├── carteira-vacinacao/        # Histórico de vacinação
+│   │   │   ├── criancas/                  # Gestão de crianças
+│   │   │   └── campanha-vacinacao/        # Campanhas ativas
+│   │   │
+│   │   ├── app.routes.ts                  # Configuração de rotas
+│   │   ├── app.component.ts               # (moved to shared/app)
+│   │   └── app.component.html             # (moved to shared/app)
+│   │
+│   ├── assets/                            # Ícones e recursos estáticos
+│   ├── environments/                      # Configuração por ambiente
+│   ├── theme/                             # Estilos globais (SCSS)
+│   ├── index.html
+│   └── main.ts
+│
+├── www/                                   # Build output (distribuição)
+├── public/                                # Assets públicos
+├── .gitignore                             # Configuração Git
+├── angular.json                           # Configuração Angular
+├── ionic.config.json                      # Configuração Ionic
+├── capacitor.config.ts                    # Configuração Capacitor
+├── tsconfig.json                          # Configuração TypeScript
+├── karma.conf.js                          # Configuração de testes
+├── package.json                           # Dependências do projeto
+└── README.md                              # Documentação (este arquivo)
 ```
 
 ## 🚀 Como Começar
