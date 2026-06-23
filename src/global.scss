@@ -1,14 +1,3 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
@@ -25,13 +14,441 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+:root {
+  --color-primary-dark: #473C33;
+  --color-secondary-light: #ABC270;
+  --color-accent-warm: #FDA769;
+  --color-accent-sunny: #FEC868;
+  --color-light-bg: #F5F9F0;
+  --color-text-dark: #2C2C2C;
+  --color-text-light: #6B6B6B;
+}
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+body,
+ion-app {
+  background-color: var(--color-light-bg);
+}
+
+ion-content {
+  --background: var(--color-light-bg);
+  --ion-background-color: var(--color-light-bg);
+}
+
+.ion-page {
+  background-color: var(--color-light-bg);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-text-dark);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  color: var(--color-text-light);
+  margin-bottom: 1rem;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  --ion-toolbar-background: var(--ion-color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-title {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+ion-card {
+  --background: white;
+  border-radius: 16px;
+  box-shadow: none;
+  margin: 12px;
+  padding: 16px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+ion-card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+ion-card-title {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+ion-card-subtitle {
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+ion-button {
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: none;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+}
+
+ion-button.button-primary {
+  --background: var(--ion-color-primary);
+  --color: white;
+}
+
+ion-button.button-primary:hover {
+  --background: #5a4d45;
+  box-shadow: 0 4px 12px rgba(71, 60, 51, 0.3);
+}
+
+ion-button.button-success {
+  --background: var(--ion-color-secondary);
+  --color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+ion-button.button-success:hover {
+  --background: #99b05c;
+  box-shadow: 0 4px 12px rgba(171, 194, 112, 0.3);
+}
+
+ion-button.button-warning {
+  --background: var(--ion-color-tertiary);
+  --color: white;
+}
+
+ion-button.button-warning:hover {
+  --background: #eb8a50;
+  box-shadow: 0 4px 12px rgba(253, 167, 105, 0.3);
+}
+
+ion-list {
+  --background: transparent;
+  --list-background: transparent;
+  background: transparent;
+}
+
+ion-item {
+  --background: white;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  margin: 8px 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  --border-style: none;
+  border: none;
+}
+
+ion-item:hover {
+  background-color: #fafafa;
+  box-shadow: none;
+}
+
+ion-item-divider {
+  --background: transparent;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  padding: 12px 12px;
+  border: none;
+  --border-style: none;
+}
+
+ion-menu {
+  --background: white;
+}
+
+ion-menu ion-toolbar {
+  --background: var(--ion-color-secondary);
+  box-shadow: 0 2px 8px rgba(171, 194, 112, 0.2);
+}
+
+ion-menu ion-title {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+ion-menu ion-item {
+  --color: var(--color-primary-dark);
+}
+
+ion-menu ion-item ion-label {
+  color: var(--color-primary-dark);
+  font-weight: 500;
+}
+
+ion-text {
+  color: var(--color-text-dark);
+}
+
+ion-label {
+  color: var(--color-text-dark) !important;
+}
+
+.ion-color-warning {
+  --ion-color-base: var(--ion-color-warning);
+}
+
+.ion-color-warning-tint {
+  background-color: var(--ion-color-warning);
+}
+
+ion-card.card-warning,
+.card-warning {
+  background-color: var(--ion-color-tertiary);
+  color: white;
+}
+
+.card-warning ion-card-title {
+  color: white;
+  font-weight: 700;
+}
+
+.card-warning ion-card-subtitle,
+.card-warning ion-text,
+.card-warning p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+ion-card.card-success,
+.card-success {
+  background-color: var(--ion-color-secondary);
+  color: var(--color-primary-dark);
+}
+
+.card-success ion-card-title {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.card-success ion-card-subtitle,
+.card-success ion-text,
+.card-success p {
+  color: var(--color-primary-dark);
+}
+
+ion-card[color="tertiary"],
+ion-card[color="warning"],
+ion-card.ion-color-tertiary,
+ion-card.ion-color-warning {
+  --background: var(--ion-color-tertiary);
+}
+
+ion-card[color="tertiary"] ion-card-title,
+ion-card[color="tertiary"] ion-card-subtitle,
+ion-card[color="tertiary"] p,
+ion-card[color="tertiary"] ion-text,
+ion-card[color="tertiary"] ion-label,
+.ion-color-tertiary ion-card-title,
+.ion-color-tertiary ion-card-subtitle,
+.ion-color-tertiary p,
+.ion-color-tertiary ion-text,
+.ion-color-tertiary ion-label {
+  color: var(--ion-color-primary) !important;
+}
+
+ion-card[color="tertiary"] ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-card[color="secondary"],
+ion-card.ion-color-secondary {
+  background-color: var(--ion-color-secondary);
+}
+
+ion-card[color="secondary"] ion-card-title,
+ion-card[color="secondary"] ion-card-subtitle,
+ion-card[color="secondary"] p,
+ion-card[color="secondary"] ion-text,
+ion-card[color="secondary"] ion-label {
+  color: var(--color-primary-dark) !important;
+}
+
+ion-badge {
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-success {
+  --background: var(--ion-color-secondary);
+  color: var(--color-primary-dark);
+}
+
+.badge-warning {
+  --background: var(--ion-color-tertiary);
+  color: white;
+}
+
+.badge-info {
+  --background: var(--ion-color-warning);
+  color: var(--color-primary-dark);
+}
+
+ion-input,
+ion-textarea,
+ion-select {
+  --background: white;
+  --border-radius: 12px;
+  border: 2px solid #E8E8E8;
+  border-radius: 12px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+ion-input:focus,
+ion-textarea:focus,
+ion-select:focus {
+  --border-color: var(--ion-color-secondary);
+  border-color: var(--ion-color-secondary);
+  box-shadow: 0 0 0 3px rgba(171, 194, 112, 0.1);
+}
+
+ion-label {
+  color: var(--color-text-light);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  border-left: 4px solid var(--ion-color-secondary);
+  padding: 12px;
+  border-radius: 8px;
+  color: var(--color-primary-dark);
+}
+
+.alert-warning {
+  background-color: #fff3e0;
+  border-left: 4px solid var(--ion-color-tertiary);
+  padding: 12px;
+  border-radius: 8px;
+  color: var(--color-primary-dark);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+ion-card {
+  animation: slideIn 0.3s ease;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+ion-tab-bar {
+  --background: white;
+  --border-color: transparent;
+  border-top: none;
+  box-shadow: none;
+}
+
+ion-tab-button {
+  --color: var(--color-text-light);
+  --color-selected: var(--ion-color-secondary);
+  font-weight: 500;
+  border: none;
+}
+
+ion-tab-button.tab-selected {
+  --color: var(--ion-color-secondary);
+}
+
+ion-split-pane {
+  --border: none;
+}
+
+ion-split-pane::before {
+  display: none;
+}
+
+ion-item[lines="none"],
+ion-item[lines="full"],
+ion-item[lines="inset"] {
+  --border-style: none;
+  border: none;
+}
+
+ion-list[lines="none"],
+ion-list[lines="full"],
+ion-list[lines="inset"] {
+  border: none;
+}
+
+ion-list ion-item {
+  --inner-border-width: 0;
+  --border-style: none;
+}
+
+ion-tab-button::before,
+ion-tab-button::after {
+  display: none;
+}
+
+[lines] {
+  border: none !important;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  ion-card {
+    margin: 8px;
+  }
+
+  ion-button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
